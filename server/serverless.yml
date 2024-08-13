@@ -1,0 +1,30 @@
+service: elera-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-south-1
+  environment:
+    MONGO_DB_URL: ${ssm:/elera-api/${opt:stage, 'dev'}/MONGO_DB_URL}
+    MONGO_USER: ${ssm:/elera-api/${opt:stage, 'dev'}/MONGO_USER}
+    MONGO_PASSWORD: ${ssm:/elera-api/${opt:stage,'dev'}/MONGO_PASSWORD}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - lambda:invokeFunction
+          Resource: '*'
+        - Effect: 'Allow'
+          Action:
+            - ssm:GetParameter
+            - ssm:GetParameters
+            - ssm:GetParametersByPath
+          Resource: '*'
+
+plugins:
+  - serverless-plugin-typescript
+
+functions: ${file(configs/functions.yml)}

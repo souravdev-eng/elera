@@ -1,0 +1,12 @@
+getAllCourses:
+  handler: functions/course/getAllCourse.handler
+  events:
+    - http:
+        path: /course
+        method: get
+createCourse:
+  handler: functions/course/createCourse.handler
+  events:
+    - http:
+        path: /course
+        method: post

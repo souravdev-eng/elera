@@ -1,0 +1,21 @@
+{
+  "name": "elera-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1668.0",
+    "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.143",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.5.4"
+  }
+}
